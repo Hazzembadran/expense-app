@@ -7,13 +7,18 @@ import ExpensesInfo from '../Components/Info/ExpensesInfo';
 import ExpensesForm from '../Components/Form/ExpensesForm';
 
 const MainLayout = () => {
+
+  let onExpensesFormSubmit = (newExpens) => {
+    console.log(newExpens);
+  };
+
   return (
     <div className="container mt-5">
       <div className="row">
         <ExpensesImage />
         <div className="col-sm-6 mt-5">
           <ExpensesInfo />
-          <ExpensesForm />
+          <ExpensesForm formSubmit={onExpensesFormSubmit} />
         </div>
       </div>
 
