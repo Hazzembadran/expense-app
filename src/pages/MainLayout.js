@@ -1,4 +1,6 @@
 import React from 'react'
+import "bootstrap/dist/css/bootstrap.css";
+import "../Resources/css/custom.css";
 
 const MainLayout = () => {
   return (
