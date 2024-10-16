@@ -6,10 +6,10 @@ const ExpenxsesTableRow = (props) => {
       <td>{props.title}</td>
       <td>{props.date}</td>
       <td>{props.price}</td>
-      <td colspan="2">{props.descrption}</td>
-      <td class="text-right">
-        <a href="#" class="delete">
-          <i class="fa fa-trash-o" aria-hidden="true" />
+      <td colSpan="2">{props.descrption}</td>
+      <td className="text-right">
+        <a href="#" className="delete">
+          <i className="fa fa-trash-o" aria-hidden="true" />
         </a>
       </td>
     </tr>
@@ -18,9 +18,9 @@ const ExpenxsesTableRow = (props) => {
     //   <td> 2022-05-09</td>
     //   <td>300$ </td>
     //   <td colspan="2">any descrption can be here </td>
-    //   <td class="text-right">
-    //     <a href="#" class="delete">
-    //       <i class="fa fa-trash-o" aria-hidden="true" />
+    //   <td className="text-right">
+    //     <a href="#" className="delete">
+    //       <i className="fa fa-trash-o" aria-hidden="true" />
     //     </a>
     //   </td>
     // </tr>

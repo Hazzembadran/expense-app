@@ -8,17 +8,17 @@ import ExpensesForm from '../Components/Form/ExpensesForm';
 
 const MainLayout = () => {
   return (
-    <div class="container mt-5">
-      <div class="row">
+    <div className="container mt-5">
+      <div className="row">
         <ExpensesImage />
-        <div class="col-sm-6 mt-5">
+        <div className="col-sm-6 mt-5">
           <ExpensesInfo />
           <ExpensesForm />
         </div>
       </div>
 
-      <div class="row mt-5 mb-5">
-        <div class="custom-card ">
+      <div className="row mt-5 mb-5">
+        <div className="custom-card ">
           <ExpenxsesTable />
         </div>
       </div>

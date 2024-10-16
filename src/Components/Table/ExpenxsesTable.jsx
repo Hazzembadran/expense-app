@@ -3,7 +3,7 @@ import ExpenxsesTableRow from "./ExpenxsesTableRow";
 
 const ExpenxsesTable = () => {
   return (
-    <table class="table ">
+    <table className="table ">
       <thead>
         <tr>
           <th> Title</th>
