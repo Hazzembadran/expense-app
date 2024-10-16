@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import ExpensesFormInput from "./ExpensesFormInput";
+import ExpensesModel from "../../Model/ExpensesModel";
 
 const ExpensesForm = () => {
   let titleRef = useRef();
@@ -10,6 +11,13 @@ const ExpensesForm = () => {
   let onSubmitHandler = (event) => {
     event.preventDefault();
     console.log(titleRef.current.value);
+    const expensesModel = new ExpensesModel(
+      titleRef.current.value,
+      dateRef.current.value,
+      valueRef.current.value,
+      descriptionRef.current.value
+    );
+    console.log(expensesModel); 
   };
 
   return (
