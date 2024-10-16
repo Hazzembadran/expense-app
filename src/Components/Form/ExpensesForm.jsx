@@ -1,36 +1,18 @@
 import React from "react";
+import ExpensesFormInput from "./ExpensesFormInput";
 
 const ExpensesForm = () => {
   return (
     <form className="row">
-      <div className="mb-3 col-md-6">
-        <label className="form-label">Title</label>
-        <input type="text" className="form-control addTitle" aria-describedby="" />
-      </div>
+      <ExpensesFormInput title="Title" type="text" classInput="addTitle" />
+      <ExpensesFormInput title="Date" type="date" classInput="addDate" />
+      <ExpensesFormInput title="Value" type="text" classInput="addValue" />
+      <ExpensesFormInput
+        title="Description"
+        type="text"
+        classInput="addDescription"
+      />
 
-      <div className="mb-3 col-md-6">
-        <label className="form-label">Date</label>
-        <input type="date" className="form-control addDate" aria-describedby="" />
-      </div>
-
-      <div className="mb-3 col-md-6">
-        <label className="form-label">Value</label>
-        <input
-          type="number"
-          className="form-control addValue"
-          aria-describedby=""
-        />
-      </div>
-      <div className="mb-3 col-md-6">
-        <label htmlFor="title" className="form-label">
-          Description
-        </label>
-        <input
-          type="text"
-          className="form-control addDescrption"
-          aria-describedby=""
-        />
-      </div>
       <div className="mb-3 col-md-12 text-right">
         <button type="submit" className="btn btn-primary addBtn">
           Add
