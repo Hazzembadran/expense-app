@@ -4,12 +4,14 @@ import ExpenxsesTable from '../Components/Table/ExpenxsesTable';
 import ExpensesImage from '../Components/Info/ExpensesImage';
 import ExpensesInfo from '../Components/Info/ExpensesInfo';
 import ExpensesForm from '../Components/Form/ExpensesForm';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ExpensesModel from "../Model/ExpensesModel";
 
 const MainLayout = () => {
 
   let [expenses, setExpenses] = useState([]);
+
+
 
   let onExpensesFormSubmit = (newExpens) => {
     newExpens.id = expenses.length + 1;
@@ -72,6 +74,7 @@ const MainLayout = () => {
       });
   };
 
+  useEffect(fetchExpensesFromFirebase, []);
 
   let onDeleteExpenseHandler = (id) => {
     console.log(id)
