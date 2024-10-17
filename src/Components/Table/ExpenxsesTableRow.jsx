@@ -1,6 +1,10 @@
 import React from "react";
 
 const ExpenxsesTableRow = (props) => {
+  let onDeleteExpense= ()=> {
+    // console.log(props.id)
+    props.deleteExpense(props.id)
+  };
   return (
     <tr>
       <td>{props.title}</td>
@@ -8,22 +12,11 @@ const ExpenxsesTableRow = (props) => {
       <td>{props.value}</td>
       <td colSpan="2">{props.description}</td>
       <td className="text-right">
-        <a href="#" className="delete">
+        <a href="#" className="delete" onClick={onDeleteExpense}>
           <i className="fa fa-trash-o" aria-hidden="true" />
         </a>
       </td>
     </tr>
-    // <tr>
-    //   <td> House rent </td>
-    //   <td> 2022-05-09</td>
-    //   <td>300$ </td>
-    //   <td colspan="2">any descrption can be here </td>
-    //   <td className="text-right">
-    //     <a href="#" className="delete">
-    //       <i className="fa fa-trash-o" aria-hidden="true" />
-    //     </a>
-    //   </td>
-    // </tr>
   );
 };
 

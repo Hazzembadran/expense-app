@@ -1,7 +1,11 @@
 import React from "react";
 import ExpenxsesTableRow from "./ExpenxsesTableRow";
 
-const ExpenxsesTable = () => {
+const ExpenxsesTable = (props) => {
+  let onDeleteExpense = (id) => {
+    props.deleteExpenseHandler(id);
+  };
+
   return (
     <table className="table ">
       <thead>
@@ -14,7 +18,19 @@ const ExpenxsesTable = () => {
         </tr>
       </thead>
       <tbody>
-        <ExpenxsesTableRow />
+        {props.expenses.map((element) => (
+          <>
+          {/* {console.log(element)} */}
+          <ExpenxsesTableRow
+            key={element.id}
+            id={element.id}
+            title={element.title}
+            date={element.date}
+            value={element.value}
+            description={element.description}
+            deleteExpense={onDeleteExpense}/>
+            </>
+        ))}
       </tbody>
     </table>
   );
