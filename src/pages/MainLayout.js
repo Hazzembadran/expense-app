@@ -74,13 +74,37 @@ const MainLayout = () => {
       });
   };
 
-  useEffect(fetchExpensesFromFirebase, []);
-
   let onDeleteExpenseHandler = (id) => {
     console.log(id)
-    let filterdExpenses = expenses.filter((element) => element.id !== id);
-    setExpenses(filterdExpenses)
+
   };
+
+
+  let deleteExpenseFromFirebase = (id) => {
+    fetch(`https://fake-api-expenses.firebaseio.com/expenses/${id}.json`, {
+      method: "DELETE",
+    }).then((response) => {
+      return response.json();
+    }).then((result) => {
+      let filterdExpenses = expenses.filter((element) => element.id !== id);
+      setExpenses(filterdExpenses)
+      // Swal.fire({
+      //   title: "Deleted!",
+      //   text: "Expense Deleted Successfuly!",
+      //   icon: "warning",
+      //   showConfirmButtion: false,
+      //   timer: 1500
+      // });
+    }).catch((error) => {
+
+    })
+
+  }
+
+
+
+  useEffect(fetchExpensesFromFirebase, []);
+
 
 
 

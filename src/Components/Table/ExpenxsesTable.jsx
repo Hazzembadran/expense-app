@@ -19,8 +19,6 @@ const ExpenxsesTable = (props) => {
       </thead>
       <tbody>
         {props.expenses.map((element) => (
-          <>
-          {/* {console.log(element)} */}
           <ExpenxsesTableRow
             key={element.id}
             id={element.id}
@@ -28,8 +26,8 @@ const ExpenxsesTable = (props) => {
             date={element.date}
             value={element.value}
             description={element.description}
-            deleteExpense={onDeleteExpense}/>
-            </>
+            deleteExpense={onDeleteExpense}
+          />
         ))}
       </tbody>
     </table>
