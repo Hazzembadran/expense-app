@@ -10,14 +10,22 @@ const ExpensesForm = (props) => {
 
   let onSubmitHandler = (event) => {
     event.preventDefault();
-    const expensesModel = new ExpensesModel(
+    let expensesModel = new ExpensesModel(
       titleRef.current.value,
       dateRef.current.value,
       valueRef.current.value,
       descriptionRef.current.value
     );
-    // console.log(expensesModel); 
-    props.formSubmit(expensesModel)
+    // console.log(expensesModel);
+    props.formSubmit(expensesModel);
+    clear();
+  };
+
+  let clear = () => {
+    titleRef.current.value = "";
+    dateRef.current.value = "";
+    valueRef.current.value = "";
+    descriptionRef.current.value = "";
   };
 
   return (
