@@ -18,6 +18,29 @@ const MainLayout = () => {
     });
   };
 
+  let saveNewExpenesonFirebase = (newExpense) => {
+    fetch("https://fake-api-expenses.firebaseio.com/expenses.json", {
+      method: "POST",
+      body: JSON.stringify(newExpense),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((response) => {
+      return response.json();
+    }).then((result) => {
+
+      // console.log(result.name);
+      newExpense.id = result.name;
+      setExpenses((prevExpenses)=> {
+        return [newExpense, ...prevExpenses];
+      })
+
+    }).catch((error) => {
+
+    })
+  }
+
+
 
   let onDeleteExpenseHandler = (id) => {
     console.log(id)
