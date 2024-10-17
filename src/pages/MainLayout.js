@@ -21,7 +21,8 @@ const MainLayout = () => {
 
   let onDeleteExpenseHandler = (id) => {
     console.log(id)
-  
+    let filterdExpenses = expenses.filter((element) => element.id !== id);
+    setExpenses(filterdExpenses)
   }
 
 
