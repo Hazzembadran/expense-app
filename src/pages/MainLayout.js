@@ -13,9 +13,11 @@ const MainLayout = () => {
   let onExpensesFormSubmit = (newExpens) => {
     newExpens.id = expenses.length + 1;
     // console.log(newExpens)
-    setExpenses((prevExpenses) => {
-      return [newExpens, ...prevExpenses];
-    });
+    // setExpenses((prevExpenses) => {
+    //   return [newExpens, ...prevExpenses];
+    // });
+
+    saveNewExpenesonFirebase(newExpens);
   };
 
   let saveNewExpenesonFirebase = (newExpense) => {
@@ -39,6 +41,7 @@ const MainLayout = () => {
 
     })
   }
+
 
 
 
