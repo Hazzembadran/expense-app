@@ -19,6 +19,14 @@ const MainLayout = () => {
   };
 
 
+  let onDeleteExpenseHandler = (id) => {
+    console.log(id)
+  
+  }
+
+
+
+
   return (
     <div className="container mt-5">
       <div className="row">
@@ -31,7 +39,7 @@ const MainLayout = () => {
 
       <div className="row mt-5 mb-5">
         <div className="custom-card ">
-          <ExpenxsesTable expenses={expenses}  />
+          <ExpenxsesTable expenses={expenses} deleteExpenseHandler={onDeleteExpenseHandler}  />
         </div>
       </div>
     </div>
