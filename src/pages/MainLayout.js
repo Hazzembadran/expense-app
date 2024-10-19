@@ -35,9 +35,26 @@ class MainLayout extends Component {
       });
 
     }).catch((error) => {
-      console.log(error.message());
+      console.log(error.message);
     })
-  }
+  };
+
+  fetchExpensesFromFirebase = () => {
+    axios.get(
+      "https://fake-api-expenses.firebaseio.com/expenses.json"
+    ).then((response) => {
+      let expensesFromFirebase = [];
+      for (key in response.data) {
+        response.data[expensesFromFirebase].id = key;
+        expensesFromFirebase.push(response.data[key]);
+      }
+
+      this.setState({expenses: expensesFromFirebase})
+
+    }).catch((error) => {
+      console.log(error.message)
+    })
+  };
 
   onDeleteExpenseHandler = (id) => {
     // console.log(id)
