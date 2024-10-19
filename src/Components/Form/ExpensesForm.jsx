@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ExpensesModel from "../../Model/ExpensesModel";
 
 export class ExpensesForm extends Component {
   constructor() {
@@ -13,14 +14,22 @@ export class ExpensesForm extends Component {
 
   onSubmitHandler = (event) => {
     event.preventDefault();
+
+    let expensesModel = new ExpensesModel(
+      this.state.titleValue,
+      this.state.dateValue,
+      this.state.priceValue,
+      this.state.descriptionValue
+    );
+    console.log(expensesModel)
   };
+
 
   onTitleChangeHandler = (content) => {
     this.setState({ titleValue: content.target.value });
   };
 
   onDateChangeHandler = (content) => {
-    console.log(content.target.value);
     this.setState({ dateValue: content.target.value });
   };
 
