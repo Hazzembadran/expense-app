@@ -1,19 +1,18 @@
-import React from "react";
+import React, { Component } from "react";
 
-const ExpensesFormInput = React.forwardRef((props, ref) => {
-  return (
-    <div className="mb-3 col-md-6">
-      <label className="form-label">{props.title}</label>
-      <input
-        type={props.type}
-        className={`form-control ${props.classInput}`}
-        aria-describedby=""
-        ref={ref}
-      />
-    </div>
-  );
-});
-
-
+class ExpensesFormInput extends Component {
+  render() {
+    return (
+      <div className="mb-3 col-md-6">
+        <label className="form-label">{this.props.title}</label>
+        <input
+          type={this.props.type}
+          className={`form-control ${this.props.classInput}`}
+          aria-describedby=""
+        />
+      </div>
+    );
+  }
+}
 
 export default ExpensesFormInput;

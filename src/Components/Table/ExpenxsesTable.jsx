@@ -1,37 +1,43 @@
-import React from "react";
+import React, { Component } from "react";
 import ExpenxsesTableRow from "./ExpenxsesTableRow";
 
-const ExpenxsesTable = (props) => {
-  let onDeleteExpense = (id) => {
-    props.deleteExpenseHandler(id);
-  };
 
-  return (
-    <table className="table ">
-      <thead>
-        <tr>
-          <th> Title</th>
-          <th> Date</th>
-          <th>value</th>
-          <th>Description</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        {props.expenses.map((element) => (
+class ExpenxsesTable extends Component {
+  render() {
+    return (
+      <table className="table ">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th>value</th>
+            <th>Description</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {/* {props.expenses.map((element) => (
+            <ExpenxsesTableRow
+              key={element.id}
+              id={element.id}
+              title={element.title}
+              date={element.date}
+              value={element.value}
+              description={element.description}
+              deleteExpense={onDeleteExpense}
+            />
+          ))} */}
           <ExpenxsesTableRow
-            key={element.id}
-            id={element.id}
-            title={element.title}
-            date={element.date}
-            value={element.value}
-            description={element.description}
-            deleteExpense={onDeleteExpense}
+            title={"Hazem"}
+            date={"3-12-2024"}
+            value={"Hazem Work"}
+            description={"Hazem Hazem Hazem Hazem"}
+            // deleteExpense={onDeleteExpense}
           />
-        ))}
-      </tbody>
-    </table>
-  );
-};
+        </tbody>
+      </table>
+    );
+  }
+}
 
 export default ExpenxsesTable;

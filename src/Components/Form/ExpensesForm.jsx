@@ -1,67 +1,28 @@
-import React, { useRef } from "react";
 import ExpensesFormInput from "./ExpensesFormInput";
-import ExpensesModel from "../../Model/ExpensesModel";
+import React, { Component } from "react";
 
-const ExpensesForm = (props) => {
-  let titleRef = useRef();
-  let dateRef = useRef();
-  let valueRef = useRef();
-  let descriptionRef = useRef();
+export class ExpensesForm extends Component {
+  render() {
+    return ( 
+      // onSubmit={onSubmitHandler}
+      <form className="row">
+        <ExpensesFormInput title="Title" type="text" classInput="addTitle" />
+        <ExpensesFormInput title="Date" type="date" classInput="addDate" />
+        <ExpensesFormInput title="Value" type="text" classInput="addValue" />
+        <ExpensesFormInput
+          title="Description"
+          type="text"
+          classInput="addDescription"
+        />
 
-  let onSubmitHandler = (event) => {
-    event.preventDefault();
-    let expensesModel = new ExpensesModel(
-      titleRef.current.value,
-      dateRef.current.value,
-      valueRef.current.value,
-      descriptionRef.current.value
+        <div className="mb-3 col-md-12 text-right">
+          <button type="submit" className="btn btn-primary addBtn">
+            Add
+          </button>
+        </div>
+      </form>
     );
-    // console.log(expensesModel);
-    props.formSubmit(expensesModel);
-    clear();
-  };
-
-  let clear = () => {
-    titleRef.current.value = "";
-    dateRef.current.value = "";
-    valueRef.current.value = "";
-    descriptionRef.current.value = "";
-  };
-
-  return (
-    <form className="row" onSubmit={onSubmitHandler}>
-      <ExpensesFormInput
-        title="Title"
-        type="text"
-        classInput="addTitle"
-        ref={titleRef}
-      />
-      <ExpensesFormInput
-        title="Date"
-        type="date"
-        classInput="addDate"
-        ref={dateRef}
-      />
-      <ExpensesFormInput
-        title="Value"
-        type="text"
-        classInput="addValue"
-        ref={valueRef}
-      />
-      <ExpensesFormInput
-        title="Description"
-        type="text"
-        classInput="addDescription"
-        ref={descriptionRef}
-      />
-
-      <div className="mb-3 col-md-12 text-right">
-        <button type="submit" className="btn btn-primary addBtn">
-          Add
-        </button>
-      </div>
-    </form>
-  );
-};
+  }
+}
 
 export default ExpensesForm;
