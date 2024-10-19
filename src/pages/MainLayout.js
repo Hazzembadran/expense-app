@@ -4,6 +4,7 @@ import "../Resources/css/custom.css";
 import ExpensesImage from '../Components/Info/ExpensesImage';
 import ExpensesForm from "../Components/Form/ExpensesForm"
 import ExpenxsesTable from "../Components/Table/ExpenxsesTable"
+import axios from "axios";
 
 
 class MainLayout extends Component {
@@ -16,10 +17,27 @@ class MainLayout extends Component {
 
   onExpensesFormSubmit = (newExpens) => {
     // console.log(newExpens);
-    newExpens.id = Math.random();
-    this.setState({ expenses: [newExpens, ...this.state.expenses] , resetForm: true })
+    // newExpens.id = Math.random();
+    // this.setState({ expenses: [newExpens, ...this.state.expenses], resetForm: true })
     // console.log(this.state.expenses)
+    this.safeNewExpensInFirebase(newExpens)
   };
+
+  safeNewExpensInFirebase = (newExpens) => {
+    axios.post("https://fake-api-expenses.firebaseio.com/expenses.json",
+      newExpens
+    ).then((response) => {
+      console.log(response);
+      newExpens.id = response.data.name;
+      this.setState({
+        expenses: [newExpens, ...this.state.expenses],
+        resetForm: true
+      });
+
+    }).catch((error) => {
+      console.log(error.message());
+    })
+  }
 
   onDeleteExpenseHandler = (id) => {
     // console.log(id)
@@ -34,8 +52,8 @@ class MainLayout extends Component {
           <ExpensesImage />
           <div className="col-sm-6 mt-5">
 
-            <ExpensesForm 
-              formSubmit={this.onExpensesFormSubmit} 
+            <ExpensesForm
+              formSubmit={this.onExpensesFormSubmit}
               resetTag={this.state.resetForm} />
           </div>
         </div>
