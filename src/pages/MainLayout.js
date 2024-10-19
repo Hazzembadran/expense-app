@@ -16,7 +16,7 @@ class MainLayout extends Component {
 
   onExpensesFormSubmit = (newExpens) => {
     // console.log(newExpens);
-    this.setState({ expenses: newExpens })
+    this.setState({ expenses: [newExpens, ...this.state.expenses] })
     // console.log(this.state.expenses)
   };
 
