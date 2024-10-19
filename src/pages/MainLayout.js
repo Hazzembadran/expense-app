@@ -22,7 +22,9 @@ class MainLayout extends Component {
   };
 
   onDeleteExpenseHandler = (id) => {
-    console.log(id)
+    // console.log(id)
+    let filterdExpenses = this.state.expenses.filter((element) => element.id !== id);
+    this.setState({expenses: filterdExpenses})
   };
 
   render() {
@@ -38,8 +40,8 @@ class MainLayout extends Component {
 
         <div className="row mt-5 mb-5">
           <div className="custom-card ">
-            <ExpenxsesTable 
-              expenses={this.state.expenses} 
+            <ExpenxsesTable
+              expenses={this.state.expenses}
               deleteExpenseHandler={this.onDeleteExpenseHandler} />
           </div>
         </div>
