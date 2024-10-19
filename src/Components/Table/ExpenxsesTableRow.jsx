@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 
 class ExpenxsesTableRow extends Component {
+  ondeleteExpenseHandlerrr = () => {
+    this.props.deleteExpenseHandlerr(this.props.id);
+  };
+
   render() {
     return (
       <tr>
@@ -9,8 +13,11 @@ class ExpenxsesTableRow extends Component {
         <td>{this.props.value}</td>
         <td colSpan="2">{this.props.description}</td>
         <td className="text-right">
-        {/* onClick={onDeleteExpense} */}
-          <a href="#" className="delete" >
+          <a
+            href="#"
+            className="delete"
+            onClick={this.ondeleteExpenseHandlerrr}
+          >
             <i className="fa fa-trash-o" aria-hidden="true" />
           </a>
         </td>

@@ -3,6 +3,11 @@ import ExpenxsesTableRow from "./ExpenxsesTableRow";
 
 
 class ExpenxsesTable extends Component {
+
+  onDeleteExpenseHandlerr= (id) => {
+    this.props.deleteExpenseHandler(id)
+  }
+  
   render() {
     return (
       <table className="table ">
@@ -24,7 +29,7 @@ class ExpenxsesTable extends Component {
               date={element.date}
               value={element.value}
               description={element.description}
-              // deleteExpense={onDeleteExpense}
+              deleteExpenseHandlerr={this.onDeleteExpenseHandlerr}
             />
           ))}
           {/* <ExpenxsesTableRow

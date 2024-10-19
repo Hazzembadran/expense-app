@@ -21,6 +21,9 @@ class MainLayout extends Component {
     // console.log(this.state.expenses)
   };
 
+  onDeleteExpenseHandler = (id) => {
+    console.log(id)
+  };
 
   render() {
     return (
@@ -35,8 +38,9 @@ class MainLayout extends Component {
 
         <div className="row mt-5 mb-5">
           <div className="custom-card ">
-            {/* expenses={expenses} deleteExpenseHandler={onDeleteExpenseHandler} */}
-            <ExpenxsesTable expenses= {this.state.expenses} />
+            <ExpenxsesTable 
+              expenses={this.state.expenses} 
+              deleteExpenseHandler={this.onDeleteExpenseHandler} />
           </div>
         </div>
       </div>
