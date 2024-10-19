@@ -10,21 +10,21 @@ class MainLayout extends Component {
 
   constructor() {
     super();
-    this.state = { expenses: [] }
+    this.state = { expenses: [], resetForm: true }
 
   }
 
   onExpensesFormSubmit = (newExpens) => {
     // console.log(newExpens);
     newExpens.id = Math.random();
-    this.setState({ expenses: [newExpens, ...this.state.expenses] })
+    this.setState({ expenses: [newExpens, ...this.state.expenses] , resetForm: true })
     // console.log(this.state.expenses)
   };
 
   onDeleteExpenseHandler = (id) => {
     // console.log(id)
     let filterdExpenses = this.state.expenses.filter((element) => element.id !== id);
-    this.setState({expenses: filterdExpenses})
+    this.setState({ expenses: filterdExpenses })
   };
 
   render() {
@@ -34,7 +34,9 @@ class MainLayout extends Component {
           <ExpensesImage />
           <div className="col-sm-6 mt-5">
 
-            <ExpensesForm formSubmit={this.onExpensesFormSubmit} />
+            <ExpensesForm 
+              formSubmit={this.onExpensesFormSubmit} 
+              resetTag={this.state.resetForm} />
           </div>
         </div>
 

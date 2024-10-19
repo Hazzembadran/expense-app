@@ -24,6 +24,11 @@ export class ExpensesForm extends Component {
       );
       // console.log(expensesModel);
       this.props.formSubmit(expensesModel);
+
+      if (this.props.resetTag) {
+        console.log("first");
+        this.clearForm();
+      }
     }
   };
 
@@ -38,6 +43,16 @@ export class ExpensesForm extends Component {
     }
 
     return false;
+  };
+
+  clearForm = () => {
+    console.log("From clear form");
+    this.setState({
+      titleValue: "",
+      dateValue: "",
+      priceValue: "",
+      descriptionValue: "",
+    });
   };
 
   onTitleChangeHandler = (content) => {
