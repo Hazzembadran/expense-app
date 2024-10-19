@@ -15,6 +15,10 @@ class MainLayout extends Component {
 
   }
 
+  componentDidMount() {
+    fetchExpensesFromFirebase();
+  };
+
   onExpensesFormSubmit = (newExpens) => {
     // console.log(newExpens);
     // newExpens.id = Math.random();
@@ -49,7 +53,7 @@ class MainLayout extends Component {
         expensesFromFirebase.push(response.data[key]);
       }
 
-      this.setState({expenses: expensesFromFirebase})
+      this.setState({ expenses: expensesFromFirebase })
 
     }).catch((error) => {
       console.log(error.message)
