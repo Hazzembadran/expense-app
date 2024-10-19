@@ -16,7 +16,7 @@ class ExpenxsesTable extends Component {
           </tr>
         </thead>
         <tbody>
-          {/* {props.expenses.map((element) => (
+          {this.props.expenses.map((element) => (
             <ExpenxsesTableRow
               key={element.id}
               id={element.id}
@@ -24,16 +24,16 @@ class ExpenxsesTable extends Component {
               date={element.date}
               value={element.value}
               description={element.description}
-              deleteExpense={onDeleteExpense}
+              // deleteExpense={onDeleteExpense}
             />
-          ))} */}
-          <ExpenxsesTableRow
+          ))}
+          {/* <ExpenxsesTableRow
             title={"Hazem"}
             date={"3-12-2024"}
             value={"Hazem Work"}
             description={"Hazem Hazem Hazem Hazem"}
             // deleteExpense={onDeleteExpense}
-          />
+          /> */}
         </tbody>
       </table>
     );

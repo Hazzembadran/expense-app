@@ -16,6 +16,7 @@ class MainLayout extends Component {
 
   onExpensesFormSubmit = (newExpens) => {
     // console.log(newExpens);
+    newExpens.id = Math.random();
     this.setState({ expenses: [newExpens, ...this.state.expenses] })
     // console.log(this.state.expenses)
   };
@@ -35,7 +36,7 @@ class MainLayout extends Component {
         <div className="row mt-5 mb-5">
           <div className="custom-card ">
             {/* expenses={expenses} deleteExpenseHandler={onDeleteExpenseHandler} */}
-            <ExpenxsesTable />
+            <ExpenxsesTable expenses= {this.state.expenses} />
           </div>
         </div>
       </div>
