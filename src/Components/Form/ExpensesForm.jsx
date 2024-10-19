@@ -15,15 +15,29 @@ export class ExpensesForm extends Component {
   onSubmitHandler = (event) => {
     event.preventDefault();
 
-    let expensesModel = new ExpensesModel(
-      this.state.titleValue,
-      this.state.dateValue,
-      this.state.priceValue,
-      this.state.descriptionValue
-    );
-    console.log(expensesModel)
+    if (this.validatFrorm()) {
+      let expensesModel = new ExpensesModel(
+        this.state.titleValue,
+        this.state.dateValue,
+        this.state.priceValue,
+        this.state.descriptionValue
+      );
+      console.log(expensesModel);
+    }
   };
 
+  validatFrorm = () => {
+    if (
+      (this.state.titleValue !== "",
+      this.state.dateValue !== "",
+      this.state.priceValue !== "",
+      this.state.descriptionValue !== "")
+    ) {
+      return true;
+    }
+
+    return false;
+  };
 
   onTitleChangeHandler = (content) => {
     this.setState({ titleValue: content.target.value });
