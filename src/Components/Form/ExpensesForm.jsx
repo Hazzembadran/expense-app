@@ -22,7 +22,8 @@ export class ExpensesForm extends Component {
         this.state.priceValue,
         this.state.descriptionValue
       );
-      console.log(expensesModel);
+      // console.log(expensesModel);
+      this.props.formSubmit(expensesModel);
     }
   };
 

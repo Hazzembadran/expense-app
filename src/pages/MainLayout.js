@@ -8,8 +8,8 @@ import ExpenxsesTable from "../Components/Table/ExpenxsesTable"
 
 class MainLayout extends Component {
 
-  onExpensesFormSubmit = () => {
-
+  onExpensesFormSubmit = (newExpens) => {
+    console.log(newExpens)
   }
 
   render() {
@@ -19,8 +19,8 @@ class MainLayout extends Component {
         <div className="row">
           <ExpensesImage />
           <div className="col-sm-6 mt-5">
-            {/* formSubmit={onExpensesFormSubmit}  */}
-            <ExpensesForm />
+
+            <ExpensesForm formSubmit={this.onExpensesFormSubmit} />
           </div>
         </div>
 
