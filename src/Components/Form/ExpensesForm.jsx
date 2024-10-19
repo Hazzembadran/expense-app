@@ -1,19 +1,79 @@
-import ExpensesFormInput from "./ExpensesFormInput";
 import React, { Component } from "react";
 
 export class ExpensesForm extends Component {
+  constructor() {
+    super();
+    this.state = {
+      titleValue: "",
+      dateValue: "",
+      priceValue: "",
+      descriptionValue: "",
+    };
+  }
+
+  onSubmitHandler = (event) => {
+    event.preventDefault();
+  };
+
+  onTitleChangeHandler = (content) => {
+    this.setState({ titleValue: content.target.value });
+  };
+
+  onDateChangeHandler = (content) => {
+    console.log(content.target.value);
+    this.setState({ dateValue: content.target.value });
+  };
+
+  onValueChangeHandler = (content) => {
+    this.setState({ priceValue: content.target.value });
+  };
+
+  onDescriptionChangeHandler = (content) => {
+    this.setState({ descriptionValue: content.target.value });
+  };
+
   render() {
-    return ( 
-      // onSubmit={onSubmitHandler}
-      <form className="row">
-        <ExpensesFormInput title="Title" type="text" classInput="addTitle" />
-        <ExpensesFormInput title="Date" type="date" classInput="addDate" />
-        <ExpensesFormInput title="Value" type="text" classInput="addValue" />
-        <ExpensesFormInput
-          title="Description"
-          type="text"
-          classInput="addDescription"
-        />
+    return (
+      <form className="row" onSubmit={this.onSubmitHandler}>
+        <div className="mb-3 col-md-6">
+          <label className="form-label">Title</label>
+          <input
+            type="text"
+            className="form-control addTitle"
+            aria-describedby=""
+            onChange={this.onTitleChangeHandler}
+          />
+        </div>
+
+        <div className="mb-3 col-md-6">
+          <label className="form-label">Date</label>
+          <input
+            type="date"
+            className="form-control addDate"
+            aria-describedby=""
+            onChange={this.onDateChangeHandler}
+          />
+        </div>
+
+        <div className="mb-3 col-md-6">
+          <label className="form-label">Value</label>
+          <input
+            type="text"
+            className="form-control addValue"
+            aria-describedby=""
+            onChange={this.onValueChangeHandler}
+          />
+        </div>
+
+        <div className="mb-3 col-md-6">
+          <label className="form-label">Description</label>
+          <input
+            type="text"
+            className="form-control addDescription"
+            aria-describedby=""
+            onChange={this.onDescriptionChangeHandler}
+          />
+        </div>
 
         <div className="mb-3 col-md-12 text-right">
           <button type="submit" className="btn btn-primary addBtn">
