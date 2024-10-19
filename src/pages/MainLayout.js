@@ -8,12 +8,20 @@ import ExpenxsesTable from "../Components/Table/ExpenxsesTable"
 
 class MainLayout extends Component {
 
-  onExpensesFormSubmit = (newExpens) => {
-    console.log(newExpens)
+  constructor() {
+    super();
+    this.state = { expenses: [] }
+
   }
 
-  render() {
+  onExpensesFormSubmit = (newExpens) => {
+    // console.log(newExpens);
+    this.setState({ expenses: newExpens })
+    // console.log(this.state.expenses)
+  };
 
+
+  render() {
     return (
       <div className="container mt-5">
         <div className="row">
