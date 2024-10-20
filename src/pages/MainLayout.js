@@ -80,6 +80,7 @@ const MainLayout = () => {
   let onDeleteExpenseHandler = (id) => {
     console.log(id)
 
+    deleteExpenseFromFirebase(id)
   };
 
 
