@@ -36,12 +36,14 @@ class MainLayout extends Component {
       console.log(response);
       newExpens.id = response.data.name;
       this.setState({
-        expenses: [newExpens, ...this.state.expenses],
-        resetForm: true
+        expenses: [newExpens, ...this.state.expenses]
       });
 
     }).catch((error) => {
       console.log(error.message);
+
+    }).finally(()=>{
+      this.setState({resetForm: true})
     })
   };
 
