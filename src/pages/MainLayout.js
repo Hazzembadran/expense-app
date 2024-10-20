@@ -23,7 +23,8 @@ const MainLayout = () => {
   };
 
   let saveNewExpenesonFirebase = (newExpense) => {
-    fetch("https://fake-api-expenses.firebaseio.com/expenses.json", {
+
+    fetch(`https://vp-expenses-app-default-rtdb.firebaseio.com/expenses.json`, {
       method: "POST",
       body: JSON.stringify(newExpense),
       headers: {
@@ -45,13 +46,15 @@ const MainLayout = () => {
   };
 
   let fetchExpensesFromFirebase = () => {
-    fetch("https://fake-api-expenses.firebaseio.com/expenses.json", {
-      method: "GET",
-    }).then((response) => {
-      // console.log(response.json())
-      return response.json();
+    fetch(
+      `https://vp-expenses-app-default-rtdb.firebaseio.com/expenses.json`
+      , {
+        method: "GET",
+      }).then((response) => {
+        // console.log(response.json())
+        return response.json();
 
-    })
+      })
       .then((result) => {
         // console.log(result); 
         let fbExpenses = [];
@@ -81,23 +84,25 @@ const MainLayout = () => {
 
 
   let deleteExpenseFromFirebase = (id) => {
-    fetch(`https://fake-api-expenses.firebaseio.com/expenses/${id}.json`, {
-      method: "DELETE",
-    }).then((response) => {
-      return response.json();
-    }).then((result) => {
-      let filterdExpenses = expenses.filter((element) => element.id !== id);
-      setExpenses(filterdExpenses)
-      // Swal.fire({
-      //   title: "Deleted!",
-      //   text: "Expense Deleted Successfuly!",
-      //   icon: "warning",
-      //   showConfirmButtion: false,
-      //   timer: 1500
-      // });
-    }).catch((error) => {
+    fetch(
+      `https://vp-expenses-app-default-rtdb.firebaseio.com/expenses${id}.json`
+      , {
+        method: "DELETE",
+      }).then((response) => {
+        return response.json();
+      }).then((result) => {
+        let filterdExpenses = expenses.filter((element) => element.id !== id);
+        setExpenses(filterdExpenses)
+        // Swal.fire({
+        //   title: "Deleted!",
+        //   text: "Expense Deleted Successfuly!",
+        //   icon: "warning",
+        //   showConfirmButtion: false,
+        //   timer: 1500
+        // });
+      }).catch((error) => {
 
-    })
+      })
 
   }
 
