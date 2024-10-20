@@ -16,7 +16,7 @@ class MainLayout extends Component {
   }
 
   componentDidMount() {
-    fetchExpensesFromFirebase();
+    this.fetchExpensesFromFirebase();
   };
 
   onExpensesFormSubmit = (newExpens) => {
@@ -28,7 +28,9 @@ class MainLayout extends Component {
   };
 
   safeNewExpensInFirebase = (newExpens) => {
-    axios.post("https://fake-api-expenses.firebaseio.com/expenses.json",
+    axios.post(
+      `https://vp-expenses-app-default-rtdb.firebaseio.com/expenses.json`
+      ,
       newExpens
     ).then((response) => {
       console.log(response);
@@ -45,18 +47,21 @@ class MainLayout extends Component {
 
   fetchExpensesFromFirebase = () => {
     axios.get(
-      "https://fake-api-expenses.firebaseio.com/expenses.json"
+      `https://vp-expenses-app-default-rtdb.firebaseio.com/expenses.json`
+
     ).then((response) => {
       let expensesFromFirebase = [];
-      for (key in response.data) {
-        response.data[expensesFromFirebase].id = key;
-        expensesFromFirebase.push(response.data[key]);
+      for (let key in response.data) {
+        let expense = response.data[key];
+        expense.id = key;
+        expensesFromFirebase.push(expense);
       }
 
-      this.setState({ expenses: expensesFromFirebase })
+      console.log("firebase" + expensesFromFirebase);
+      this.setState({ expenses: expensesFromFirebase });
 
     }).catch((error) => {
-      console.log(error.message)
+      console.log(error)
     })
   };
 
@@ -68,12 +73,12 @@ class MainLayout extends Component {
 
   deleteExpenseFromFirebase = (id) => {
     axios.delete(
-      `https://fake-api-expenses.firebaseio.com/expenses${id}.json`
-    ).then((response)=>{
+      `https://vp-expenses-app-default-rtdb.firebaseio.com/expenses${id}.json`
+    ).then((response) => {
       console.log(response)
       let filterdExpenses = this.state.expenses.filter((element) => element.id !== id);
       this.setState({ expenses: filterdExpenses })
-    }).catch((error)=>{
+    }).catch((error) => {
       console.log(error.message)
     })
 
