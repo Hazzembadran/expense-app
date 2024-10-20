@@ -26,7 +26,6 @@ export class ExpensesForm extends Component {
       this.props.formSubmit(expensesModel);
 
       if (this.props.resetTag) {
-        console.log("first");
         this.clearForm();
       }
     }
@@ -34,9 +33,9 @@ export class ExpensesForm extends Component {
 
   validatFrorm = () => {
     if (
-      (this.state.titleValue !== "",
-      this.state.dateValue !== "",
-      this.state.priceValue !== "",
+      (this.state.titleValue !== "" &&
+      this.state.dateValue !== ""&&
+      this.state.priceValue !== ""&&
       this.state.descriptionValue !== "")
     ) {
       return true;
