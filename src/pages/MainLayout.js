@@ -62,9 +62,23 @@ class MainLayout extends Component {
 
   onDeleteExpenseHandler = (id) => {
     // console.log(id)
-    let filterdExpenses = this.state.expenses.filter((element) => element.id !== id);
-    this.setState({ expenses: filterdExpenses })
+    this.deleteExpenseFromFirebase(id)
+
   };
+
+  deleteExpenseFromFirebase = (id) => {
+    axios.delete(
+      `https://fake-api-expenses.firebaseio.com/expenses${id}.json`
+    ).then((response)=>{
+      console.log(response)
+      let filterdExpenses = this.state.expenses.filter((element) => element.id !== id);
+      this.setState({ expenses: filterdExpenses })
+    }).catch((error)=>{
+      console.log(error.message)
+    })
+
+  };
+
 
   render() {
     return (
