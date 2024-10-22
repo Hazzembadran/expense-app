@@ -1,12 +1,15 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import ExpensesFormInput from "./ExpensesFormInput";
 import ExpensesModel from "../../Model/ExpensesModel";
+import ExpensesContext from "../../Context/expenses-context";
 
 const ExpensesForm = (props) => {
   let titleRef = useRef();
   let dateRef = useRef();
   let valueRef = useRef();
   let descriptionRef = useRef();
+
+  let expensesContext = useContext(ExpensesContext);
 
   let onSubmitHandler = (event) => {
     event.preventDefault();
@@ -17,7 +20,8 @@ const ExpensesForm = (props) => {
       descriptionRef.current.value
     );
     // console.log(expensesModel);
-    props.formSubmit(expensesModel);
+    // props.formSubmit(expensesModel);
+    expensesContext.newExpensesHandler(expensesModel);
     clear();
   };
 

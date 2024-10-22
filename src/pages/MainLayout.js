@@ -6,6 +6,7 @@ import ExpensesInfo from '../Components/Info/ExpensesInfo';
 import ExpensesForm from '../Components/Form/ExpensesForm';
 import { useEffect, useState } from "react";
 import ExpensesModel from "../Model/ExpensesModel";
+import ExpensesContext from "../Context/expenses-context";
 
 const MainLayout = () => {
 
@@ -13,7 +14,8 @@ const MainLayout = () => {
 
 
 
-  let onExpensesFormSubmit = (newExpens) => {
+  // let onExpensesFormSubmit = (newExpens) => {
+  let onNewExpensesHandler = (newExpens) => {
     newExpens.id = expenses.length + 1;
     // console.log(newExpens)
     // setExpenses((prevExpenses) => {
@@ -117,21 +119,29 @@ const MainLayout = () => {
 
 
   return (
-    <div className="container mt-5">
-      <div className="row">
-        <ExpensesImage />
-        <div className="col-sm-6 mt-5">
-          <ExpensesInfo />
-          <ExpensesForm formSubmit={onExpensesFormSubmit} />
+    <ExpensesContext.Provider value={{
+      expensesData: expenses,
+      newExpensesHandler: onNewExpensesHandler,
+      deleteExpenesHandler: onDeleteExpenseHandler
+    }} >
+      <div className="container mt-5">
+        <div className="row">
+          <ExpensesImage />
+          <div className="col-sm-6 mt-5">
+            <ExpensesInfo />
+            <ExpensesForm />
+            {/* <ExpensesForm formSubmit={onExpensesFormSubmit} /> */}
+          </div>
         </div>
-      </div>
 
-      <div className="row mt-5 mb-5">
-        <div className="custom-card ">
-          <ExpenxsesTable expenses={expenses} deleteExpenseHandler={onDeleteExpenseHandler} />
+        <div className="row mt-5 mb-5">
+          <div className="custom-card ">
+            <ExpenxsesTable />
+            {/* <ExpenxsesTable expenses={expenses} deleteExpenseHandler={onDeleteExpenseHandler} /> */}
+          </div>
         </div>
       </div>
-    </div>
+    </ExpensesContext.Provider>
   )
 }
 

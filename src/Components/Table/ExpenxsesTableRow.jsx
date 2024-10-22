@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import ExpensesContext from "../../Context/expenses-context";
 
 const ExpenxsesTableRow = (props) => {
+  let expensesContext = useContext(ExpensesContext);
   let onDeleteExpense= ()=> {
     // console.log(props.id)
-    props.deleteExpense(props.id)
+    // props.deleteExpense(props.id)
+    expensesContext.deleteExpenesHandler(props.id);
   };
   return (
     <tr>
