@@ -2,6 +2,7 @@ import React, { useContext, useRef } from "react";
 import ExpensesFormInput from "./ExpensesFormInput";
 import ExpensesModel from "../../Model/ExpensesModel";
 import ExpensesContext from "../../Context/expenses-context";
+import Helper from "../../Utils/Helper";
 
 const ExpensesForm = (props) => {
   let titleRef = useRef();
@@ -13,15 +14,30 @@ const ExpensesForm = (props) => {
 
   let onSubmitHandler = (event) => {
     event.preventDefault();
-    let expensesModel = new ExpensesModel(
-      titleRef.current.value,
-      dateRef.current.value,
-      valueRef.current.value,
-      descriptionRef.current.value
-    );
-    
-    expensesContext.newExpensesHandler(expensesModel);
-    clear();
+    if (checkForm()) {
+      let expensesModel = new ExpensesModel(
+        titleRef.current.value,
+        dateRef.current.value,
+        valueRef.current.value,
+        descriptionRef.current.value
+      );
+
+      expensesContext.newExpensesHandler(expensesModel);
+      clear();
+    }
+  };
+
+  let checkForm = () => {
+    if (
+      titleRef.current.value !== "" &&
+      dateRef.current.value !== "" &&
+      valueRef.current.value !== "" &&
+      descriptionRef.current.value !== ""
+    ) {
+      return true;
+    }
+    Helper.showMessage("Error", "write the empty inputs", "error");
+    return false;
   };
 
   let clear = () => {
@@ -29,7 +45,7 @@ const ExpensesForm = (props) => {
     dateRef.current.value = "";
     valueRef.current.value = "";
     descriptionRef.current.value = "";
-  };  
+  };
 
   return (
     <form className="row" onSubmit={onSubmitHandler}>
@@ -47,7 +63,7 @@ const ExpensesForm = (props) => {
       />
       <ExpensesFormInput
         title="Value"
-        type="text"
+        type="number"
         classInput="addValue"
         ref={valueRef}
       />
