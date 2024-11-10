@@ -7,11 +7,12 @@ import ExpensesForm from '../Components/Form/ExpensesForm';
 import { useEffect, useState } from "react";
 import ExpensesModel from "../Model/ExpensesModel";
 import ExpensesContext from "../Context/expenses-context";
-import Swal from "sweetalert2";
+import Helper from "../Utils/Helper";
 
 const MainLayout = () => {
 
   let [expenses, setExpenses] = useState([]);
+
 
   let onNewExpensesHandler = (newExpens) => {
     newExpens.id = expenses.length + 1;
@@ -30,7 +31,6 @@ const MainLayout = () => {
       return response.json();
     }).then((result) => {
 
-      // console.log(result.name);
       newExpense.id = result.name;
       setExpenses((prevExpenses) => {
         return [newExpense, ...prevExpenses];
@@ -48,16 +48,13 @@ const MainLayout = () => {
       , {
         method: "GET",
       }).then((response) => {
-        // console.log(response.json())
         return response.json();
 
       })
       .then((result) => {
-        // console.log(result); 
         let fbExpenses = [];
         for (let key in result) {
-          // console.log(key)
-          // console.log(result[key]);
+
           let expeensesModel = new ExpensesModel(
             result[key].tilte,
             result[key].date,
@@ -75,8 +72,6 @@ const MainLayout = () => {
   };
 
   let onDeleteExpenseHandler = (id) => {
-    console.log(id)
-
     deleteExpenseFromFirebase(id)
   };
 
@@ -89,16 +84,10 @@ const MainLayout = () => {
       }).then((response) => {
         return response.json();
       }).then((result) => {
+        console.log(id)
         let filterdExpenses = expenses.filter((element) => element.id !== id);
-        setExpenses(filterdExpenses)
-        Swal.fire({
-          title: "Deleted!",
-          text: "Expense Deleted Successfuly!",
-          icon: "success",
-          showConfirmButton :false,
-
-          timer: 1333
-        });
+        setExpenses(filterdExpenses);
+        Helper.showMessage("Deleted!", "Expense Deleted Successfuly!", "success")
       }).catch((error) => {
         console.error(error)
       })
@@ -106,9 +95,7 @@ const MainLayout = () => {
   }
 
 
-
   useEffect(fetchExpensesFromFirebase, []);
-
 
 
   return (
