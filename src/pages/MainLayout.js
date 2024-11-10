@@ -37,6 +37,7 @@ const MainLayout = () => {
       })
 
     }).catch((error) => {
+      console.error(error)
 
     })
   };
@@ -56,7 +57,7 @@ const MainLayout = () => {
         for (let key in result) {
 
           let expeensesModel = new ExpensesModel(
-            result[key].tilte,
+            result[key].title,
             result[key].date,
             result[key].value,
             result[key].description
@@ -65,6 +66,7 @@ const MainLayout = () => {
           fbExpenses.push(expeensesModel);
           setExpenses(fbExpenses);
         }
+        // console.log(fbExpenses)
       })
       .catch((error) => {
         console.error(error)
