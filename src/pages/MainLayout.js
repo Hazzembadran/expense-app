@@ -83,7 +83,7 @@ const MainLayout = () => {
 
   let deleteExpenseFromFirebase = (id) => {
     fetch(
-      `https://vp-expenses-app-default-rtdb.firebaseio.com/expenses${id}.json`
+      `https://vp-expenses-app-default-rtdb.firebaseio.com/expenses/${id}.json`
       , {
         method: "DELETE",
       }).then((response) => {
@@ -94,8 +94,9 @@ const MainLayout = () => {
         Swal.fire({
           title: "Deleted!",
           text: "Expense Deleted Successfuly!",
-          icon: "warning",
-          showConfirmButtion: false,
+          icon: "success",
+          showConfirmButton :false,
+
           timer: 1333
         });
       }).catch((error) => {
