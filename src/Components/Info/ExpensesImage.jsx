@@ -1,5 +1,5 @@
 import React from "react";
-import ExpensImage from "../../Resources/img/m1.png"
+import ExpensImage from "../../Resources/img/ex.jpg"
 
 const ExpensesImage = () => {
   return (
