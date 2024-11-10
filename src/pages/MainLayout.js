@@ -7,20 +7,14 @@ import ExpensesForm from '../Components/Form/ExpensesForm';
 import { useEffect, useState } from "react";
 import ExpensesModel from "../Model/ExpensesModel";
 import ExpensesContext from "../Context/expenses-context";
+import Swal from "sweetalert2";
 
 const MainLayout = () => {
 
   let [expenses, setExpenses] = useState([]);
 
-
-
-  // let onExpensesFormSubmit = (newExpens) => {
   let onNewExpensesHandler = (newExpens) => {
     newExpens.id = expenses.length + 1;
-    // console.log(newExpens)
-    // setExpenses((prevExpenses) => {
-    //   return [newExpens, ...prevExpenses];
-    // });
     saveNewExpenesonFirebase(newExpens);
   };
 
@@ -46,6 +40,7 @@ const MainLayout = () => {
 
     })
   };
+
 
   let fetchExpensesFromFirebase = () => {
     fetch(
@@ -75,7 +70,7 @@ const MainLayout = () => {
         }
       })
       .catch((error) => {
-
+        console.error(error)
       });
   };
 
@@ -96,15 +91,15 @@ const MainLayout = () => {
       }).then((result) => {
         let filterdExpenses = expenses.filter((element) => element.id !== id);
         setExpenses(filterdExpenses)
-        // Swal.fire({
-        //   title: "Deleted!",
-        //   text: "Expense Deleted Successfuly!",
-        //   icon: "warning",
-        //   showConfirmButtion: false,
-        //   timer: 1500
-        // });
+        Swal.fire({
+          title: "Deleted!",
+          text: "Expense Deleted Successfuly!",
+          icon: "warning",
+          showConfirmButtion: false,
+          timer: 1333
+        });
       }).catch((error) => {
-
+        console.error(error)
       })
 
   }
@@ -112,9 +107,6 @@ const MainLayout = () => {
 
 
   useEffect(fetchExpensesFromFirebase, []);
-
-
-
 
 
 
@@ -130,14 +122,12 @@ const MainLayout = () => {
           <div className="col-sm-6 mt-5">
             <ExpensesInfo />
             <ExpensesForm />
-            {/* <ExpensesForm formSubmit={onExpensesFormSubmit} /> */}
           </div>
         </div>
 
         <div className="row mt-5 mb-5">
           <div className="custom-card ">
             <ExpenxsesTable />
-            {/* <ExpenxsesTable expenses={expenses} deleteExpenseHandler={onDeleteExpenseHandler} /> */}
           </div>
         </div>
       </div>

@@ -19,8 +19,7 @@ const ExpensesForm = (props) => {
       valueRef.current.value,
       descriptionRef.current.value
     );
-    // console.log(expensesModel);
-    // props.formSubmit(expensesModel);
+    
     expensesContext.newExpensesHandler(expensesModel);
     clear();
   };
@@ -30,7 +29,7 @@ const ExpensesForm = (props) => {
     dateRef.current.value = "";
     valueRef.current.value = "";
     descriptionRef.current.value = "";
-  };
+  };  
 
   return (
     <form className="row" onSubmit={onSubmitHandler}>
